@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        
+        <div class="container">
+            <h2>NOTE</h2>
+            <p><label th:text= "'Hello: ' +${session.USERNAME}"></label><a href="/logout">  Logout</a><p>
+                 <p> 	<a class="btn btn-primary" href="/list">Display List User</a></p>
+            <p> <a class= "btn btn-danger btn-sm" th:href= "@{'/addnote'}">Add Note</a></p>
+        
+            
+            <table class="table table-bordered">
+            
+                <thead>
+                    <tr>
+                      <th>date</th>
+                        <th>title</th>
+                        <th>content</th>
+                        <th> Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+             
+                
+                   <tr th:each= "item: ${notes}">
+                   <td th:text= "${item.date}"></td>
+                   <td th:text= "${item.title}"></td>
+                   <td th:text= "${item.content}"></td>
+                   <td> <a class= "btn btn-primary btn-sm" th:href= "@{'/edit1/'+ ${item.title}}">Edit</a></td>
+                   <td> <a class= "btn btn-danger btn-sm" th:href= "@{'/delete1/'+ ${item.title}}">Delete</a></td>
+                   
+                   
+                
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

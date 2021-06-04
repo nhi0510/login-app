@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>JSP Page</title>
+</head>
+<body>
+ <div class="container">
+				
+				<h2>ADD NOTE</h2>
+				
+            <p><label th:text= "'Hello: ' +${session.USERNAME}"></label><a href="/logout">  Logout</a><p>
+                 <p> 	<a class="btn btn-primary" href="/list">Display List User</a></p>
+            <p> <a class= "btn btn-danger btn-sm" th:href= "@{'/find'}">view note</a></p>
+        
+				<form th:action="${ACTION}" th:object= ${note}  method="post">
+					<div class="form-group">
+						<label>title</label> 
+						<input type="text" th:field= "*{title}" class="form-control" name="title" placeholder="Enter title" id="title" value="">
+					</div>
+					<div class="form-group">
+						<label>content</label> 
+						<input type="text"
+							class="form-control" th:field="*{content}" name="content" placeholder="Enter content">
+					</div>
+					<div class="form-group">
+						<label>date</label> 
+						<input type="text" th:field="*{date}" class="form-control" name="date" placeholder="Enter date" id="date" value="">
+					</div>
+					
+					
+				
+				
+					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="reset" class="btn btn-primary">Cancel</button>
+			<a class="btn btn-primary" href="/viewnote">Display List Note</a>
+				</form>
+			</div>
+	
+</body>
+</html>
+
